@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package wheelbid.v1;
+import "google/protobuf/timestamp.proto";
+import "wheelbid/v1/features.proto";
+
+message Car {
+  string carId = 1;
+  string name = 2;
+  string desc = 3;
+  string location = 4;
+  string address = 5;
+  string modelType = 6;
+  int32 basePriceINR = 7;
+  int32 currentBid = 8;
+  bool auctionActive = 9;
+  optional google.protobuf.Timestamp auctionClosingTime = 10;
+  Features features = 11;
+}
+
+service CarService {
+  rpc getCarDetails(CarDetailsRequest) returns (Car);
+}
+
+message CarDetailsRequest{
+  string carId = 1;
+}

@@ -1,0 +1,15 @@
+version: v2
+clean: true
+inputs:
+  - directory: proto
+plugins:
+  - local:
+      - "npx"
+      - "@bufbuild/protoc-gen-es"
+    out: ./internal/proto/gen
+    opt: target=ts
+  - local:
+      - "npx"
+      - "@bufbuild/protoc-gen-es"
+    out: ./web/app/src/gen/proto
+    opt: target=ts

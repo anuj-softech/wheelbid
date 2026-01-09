@@ -1,0 +1,7 @@
+POST http://localhost:8080/wheelbid.v1.CarService/getCarDetails
+Content-Type: application/json
+Connect-Protocol-Version: 1
+
+{
+  "carId": "7312"
+}
