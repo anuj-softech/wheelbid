@@ -43,7 +43,7 @@ The repository is organized using **pnpm workspaces**, providing a scalable and 
 wheelbid/
 │
 ├── proto/          # Protobuf schemas (single source of truth)
-├── backend/        # ConnectRPC + Express backend
+├── internal/        # ConnectRPC + Express backend
 ├── web/            # React (Vite) frontend
 │
 ├── package.json    # Root workspace configuration
