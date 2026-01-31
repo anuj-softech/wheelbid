@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { expressConnectMiddleware } from "@connectrpc/connect-express";
 import {dataRouter} from "./router/data";
+import {test_database} from "./db/test";
 
 const app = express();
 
@@ -24,6 +25,14 @@ app.use(expressConnectMiddleware({
 app.get("/", (req, res) => {
     res.send("WheelBid RPC Server is running.");
 });
+
+app.get("/test_database", (req, res) => {
+    test_database().then(r => {
+        console.log("test_database", r);
+    });
+    res.send("database server is running.");
+})
+
 
 const PORT = 8080;
 app.listen(PORT, () => {

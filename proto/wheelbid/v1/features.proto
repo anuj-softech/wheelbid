@@ -4,7 +4,7 @@ package wheelbid.v1;
 
 message Features {
   TransmissionType transmission = 1;
-  FuelType fuel = 2;
+  FuelType fuel_type = 2;
   string exterior_color = 3;
   string interior_color = 4;
   int32 mileage_km = 5;

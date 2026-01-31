@@ -1,3 +1,5 @@
 /node_modules/
 /.idea
 /internal/node_modules/
+/internal/.env
+.env
