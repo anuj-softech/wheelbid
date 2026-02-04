@@ -53,6 +53,8 @@ wheelbid/
 ---
 
 ## 🚀 Getting Started
+### prerequisite
+pnpm package manager
 
 ### 1️⃣ Install Dependencies
 
