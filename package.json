@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "backend": "cd internal && npm run dev",
-    "frontend": "cd web/app && npm run dev"
+    "frontend": "cd web/app && npm run dev",
+    "init_db": "cd internal && npx drizzle-kit push"
   },
   "keywords": [],
   "author": "",

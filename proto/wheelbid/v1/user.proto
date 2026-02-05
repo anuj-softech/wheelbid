@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package wheelbid.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message User {
+  string id = 1;
+  string phone = 2;
+  optional string name = 3;
+  optional string city_id = 4;
+  optional string address = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message SendOtpRequest {
+  string phone = 1;
+}
+
+message SendOtpResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message VerifyOtpRequest {
+  string phone = 1;
+  string otp = 2;
+}
+
+message VerifyOtpResponse {
+  bool success = 1;
+  string token = 2;
+  optional User user = 3;
+}
+
+message UpdateUserProfileRequest {
+  optional string name = 1;
+  optional string city_id = 2;
+  optional string address = 3;
+}
+
+message UpdateUserProfileResponse {
+  bool success = 1;
+  string message = 2;
+  optional User updated_user = 3;
+}
+
+message GetUserProfileRequest {
+  // Empty as ID is extracted from JWT
+}
+
+service UserService {
+  // Authentication
+  rpc SendOtp (SendOtpRequest) returns (SendOtpResponse);
+  rpc VerifyOtp (VerifyOtpRequest) returns (VerifyOtpResponse);
+
+  // Profile
+  rpc GetUserProfile (GetUserProfileRequest) returns (User);
+  rpc UpdateUserProfile (UpdateUserProfileRequest) returns (UpdateUserProfileResponse);
+}

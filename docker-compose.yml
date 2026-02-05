@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: test-postgres-container
+    ports:
+      - "4002:5432"
+    environment:
+      POSTGRES_USER: wheelbid
+      POSTGRES_PASSWORD: wheelbid
+      POSTGRES_DB: wheelbid
