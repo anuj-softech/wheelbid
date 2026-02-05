@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package wheelbid.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message AuctionDetails {
+  string id = 1;
+  string car_id = 2;
+  int64 current_bid = 3;
+  int64 min_next_bid = 4;
+  google.protobuf.Timestamp starts_at = 5;
+  google.protobuf.Timestamp ends_at = 6;
+  bool is_active = 7;
+  int32 total_bids = 8;
+}
+
+message GetAuctionRequest {
+  string car_id = 1;
+}
+
+message PlaceBidRequest {
+  string car_id = 1;
+  int64 amount = 2;
+}
+
+message PlaceBidResponse {
+  bool success = 1;
+  string message = 2;
+  int64 updated_current_bid = 3;
+}
+
+service AuctionService {
+  // Returns essential live auction data for the car details page
+  rpc GetAuctionDetails (GetAuctionRequest) returns (AuctionDetails);
+
+  // User places a bid (User ID resolved via JWT)
+  rpc PlaceBid (PlaceBidRequest) returns (PlaceBidResponse);
+}

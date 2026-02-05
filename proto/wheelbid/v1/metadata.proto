@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package wheelbid.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message City {
+  string id = 1;
+  string name = 2;
+  string state = 3;
+}
+
+message Office {
+  string id = 1;
+  string city_id = 2;
+  string name = 3;
+  string address = 4;
+  string contact_number = 5;
+}
+
+message GetCitiesRequest {
+  bool only_active = 1;
+}
+
+message GetCitiesResponse {
+  repeated City cities = 1;
+}
+
+message GetOfficesRequest {
+  optional string city_id = 1;
+}
+
+message GetOfficesResponse {
+  repeated Office offices = 1;
+}
+
+message GetOfficeDetailsRequest {
+  string id = 1;
+}
+
+service MetadataService {
+  // Returns list of cities for the "Select City" onboarding screen
+  rpc GetCities (GetCitiesRequest) returns (GetCitiesResponse);
+
+  // Returns offices, optionally filtered by the user's selected city
+  rpc GetOffices (GetOfficesRequest) returns (GetOfficesResponse);
+
+  // Returns full contact and address info for a specific office
+  rpc GetOfficeDetails (GetOfficeDetailsRequest) returns (Office);
+}

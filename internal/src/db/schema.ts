@@ -4,9 +4,10 @@ import {
 } from "drizzle-orm/pg-core";
 
 export const userRoleEnum = pgEnum("user_role", ["super", "manager", "staff"]);
-export const carStatusEnum = pgEnum("car_status", ["sell", "auction", "sold", "unavailable"]);
+export const dealTypeEnum = pgEnum("deal_type", ["sell", "auction", "sold", "unavailable"]);
 export const fuelTypeEnum = pgEnum("fuel_type", ["petrol", "diesel", "electric", "hybrid", "cng"]);
 export const transmissionEnum = pgEnum("transmission", ["manual", "automatic", "amt"]);
+export const dealStatusEnum = pgEnum("deal_status", ["enquiry" , "provisional", "cancel", "done"]);
 
 export const cities = pgTable("cities", {
     id: uuid("id").primaryKey().defaultRandom(),
@@ -69,7 +70,7 @@ export const cars = pgTable("cars", {
 
     basePrice: bigint("base_price", { mode: "number" }).notNull(),
     description: text("description"),
-    status: carStatusEnum("status").default("auction").notNull(),
+    dealType: dealTypeEnum("deal_type").default("sell").notNull(),
     isFeatured: boolean("is_featured").default(false),
 
     createdAt: timestamp("created_at").defaultNow(),
@@ -85,7 +86,7 @@ export const auctions = pgTable("auctions", {
     endsAt: timestamp("ends_at").notNull(),
     currentBid: bigint("current_bid", { mode: "number" }).default(0),
     minNextBid: bigint("min_next_bid", { mode: "number" }).default(0),
-    isActive: boolean("is_active").default(true),
+    processed: boolean("processed").default(false),
 });
 
 export const bids = pgTable("bids", {
@@ -95,3 +96,12 @@ export const bids = pgTable("bids", {
     bidAmount: bigint("bid_amount", { mode: "number" }).notNull(),
     createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const deals = pgTable("deals", {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id").references(() => users.id),
+    carId: uuid("car_id").references(() => cars.id),
+    dealType: dealTypeEnum("deal_type").default("sell").notNull(),
+    dealStatus: dealStatusEnum("deal_status").default("provisional").notNull(),
+    createdAt: timestamp("created_at").defaultNow(),
+})

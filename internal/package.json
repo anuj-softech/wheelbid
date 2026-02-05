@@ -18,11 +18,13 @@
     "@connectrpc/connect": "^2.1.1",
     "@connectrpc/connect-express": "^2.1.1",
     "@connectrpc/connect-node": "^2.1.1",
+    "@faker-js/faker": "^10.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "drizzle-orm": "^0.45.1",
     "express": "^5.2.1",
-    "pg": "^8.17.2"
+    "pg": "^8.17.2",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

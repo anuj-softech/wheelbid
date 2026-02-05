@@ -2,78 +2,131 @@
 // @generated from file wheelbid/v1/car.proto (package wheelbid.v1, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
-import { fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
+import type { GenEnum, GenFile, GenMessage, GenService } from "@bufbuild/protobuf/codegenv2";
+import { enumDesc, fileDesc, messageDesc, serviceDesc } from "@bufbuild/protobuf/codegenv2";
 import type { Timestamp } from "@bufbuild/protobuf/wkt";
 import { file_google_protobuf_timestamp } from "@bufbuild/protobuf/wkt";
-import type { Features } from "./features_pb";
-import { file_wheelbid_v1_features } from "./features_pb";
 import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file wheelbid/v1/car.proto.
  */
 export const file_wheelbid_v1_car: GenFile = /*@__PURE__*/
-  fileDesc("ChV3aGVlbGJpZC92MS9jYXIucHJvdG8SC3doZWVsYmlkLnYxIqQCCgNDYXISDQoFY2FySWQYASABKAkSDAoEbmFtZRgCIAEoCRIMCgRkZXNjGAMgASgJEhAKCGxvY2F0aW9uGAQgASgJEg8KB2FkZHJlc3MYBSABKAkSEQoJbW9kZWxUeXBlGAYgASgJEhQKDGJhc2VQcmljZUlOUhgHIAEoBRISCgpjdXJyZW50QmlkGAggASgFEhUKDWF1Y3Rpb25BY3RpdmUYCSABKAgSOwoSYXVjdGlvbkNsb3NpbmdUaW1lGAogASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAiAEBEicKCGZlYXR1cmVzGAsgASgLMhUud2hlZWxiaWQudjEuRmVhdHVyZXNCFQoTX2F1Y3Rpb25DbG9zaW5nVGltZSIiChFDYXJEZXRhaWxzUmVxdWVzdBINCgVjYXJJZBgBIAEoCTJPCgpDYXJTZXJ2aWNlEkEKDWdldENhckRldGFpbHMSHi53aGVlbGJpZC52MS5DYXJEZXRhaWxzUmVxdWVzdBoQLndoZWVsYmlkLnYxLkNhcmIGcHJvdG8z", [file_google_protobuf_timestamp, file_wheelbid_v1_features]);
+  fileDesc("ChV3aGVlbGJpZC92MS9jYXIucHJvdG8SC3doZWVsYmlkLnYxIpIFCgNDYXISCgoCaWQYASABKAkSEQoJb2ZmaWNlX2lkGAIgASgJEg8KB2NpdHlfaWQYAyABKAkSEgoKY3JlYXRlZF9ieRgEIAEoCRIMCgRtYWtlGAUgASgJEg0KBW1vZGVsGAYgASgJEgwKBHllYXIYByABKAUSCwoDdmluGAggASgJEhsKE3JlZ2lzdHJhdGlvbl9udW1iZXIYCSABKAkSKAoJZnVlbF90eXBlGAogASgOMhUud2hlZWxiaWQudjEuRnVlbFR5cGUSLwoMdHJhbnNtaXNzaW9uGAsgASgOMhkud2hlZWxiaWQudjEuVHJhbnNtaXNzaW9uEhkKEWtpbG9tZXRlcnNfZHJpdmVuGAwgASgFEhcKD293bmVyc2hpcF9jb3VudBgNIAEoBRIWCglib2R5X3R5cGUYDiABKAlIAIgBARIbCg5leHRlcmlvcl9jb2xvchgPIAEoCUgBiAEBEhwKD2NvbmRpdGlvbl9ncmFkZRgQIAEoCUgCiAEBEhIKCmJhc2VfcHJpY2UYESABKAMSGAoLZGVzY3JpcHRpb24YEiABKAlIA4gBARIoCglkZWFsX3R5cGUYEyABKA4yFS53aGVlbGJpZC52MS5EZWFsVHlwZRITCgtpc19mZWF0dXJlZBgUIAEoCBIuCgpjcmVhdGVkX2F0GBUgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIuCgp1cGRhdGVkX2F0GBYgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIMCgpfYm9keV90eXBlQhEKD19leHRlcmlvcl9jb2xvckISChBfY29uZGl0aW9uX2dyYWRlQg4KDF9kZXNjcmlwdGlvbiIbCg1HZXRDYXJSZXF1ZXN0EgoKAmlkGAEgASgJIn4KD0xpc3RDYXJzUmVxdWVzdBIPCgdjaXR5X2lkGAEgASgJEi0KCWRlYWxfdHlwZRgCIAEoDjIVLndoZWVsYmlkLnYxLkRlYWxUeXBlSACIAQESDQoFbGltaXQYAyABKAUSDgoGb2Zmc2V0GAQgASgFQgwKCl9kZWFsX3R5cGUiRgoPQ2FyTGlzdFJlc3BvbnNlEh4KBGNhcnMYASADKAsyEC53aGVlbGJpZC52MS5DYXISEwoLdG90YWxfY291bnQYAiABKAUqPAoIRGVhbFR5cGUSCAoEU0VMTBAAEgsKB0FVQ1RJT04QARIICgRTT0xEEAISDwoLVU5BVkFJTEFCTEUQAypFCghGdWVsVHlwZRIKCgZQRVRST0wQABIKCgZESUVTRUwQARIMCghFTEVDVFJJQxACEgoKBkhZQlJJRBADEgcKA0NORxAEKjIKDFRyYW5zbWlzc2lvbhIKCgZNQU5VQUwQABINCglBVVRPTUFUSUMQARIHCgNBTVQQAjKMAQoKQ2FyU2VydmljZRI2CgZHZXRDYXISGi53aGVlbGJpZC52MS5HZXRDYXJSZXF1ZXN0GhAud2hlZWxiaWQudjEuQ2FyEkYKCExpc3RDYXJzEhwud2hlZWxiaWQudjEuTGlzdENhcnNSZXF1ZXN0Ghwud2hlZWxiaWQudjEuQ2FyTGlzdFJlc3BvbnNlYgZwcm90bzM", [file_google_protobuf_timestamp]);
 
 /**
  * @generated from message wheelbid.v1.Car
  */
 export type Car = Message<"wheelbid.v1.Car"> & {
   /**
-   * @generated from field: string carId = 1;
+   * @generated from field: string id = 1;
    */
-  carId: string;
+  id: string;
 
   /**
-   * @generated from field: string name = 2;
+   * @generated from field: string office_id = 2;
    */
-  name: string;
+  officeId: string;
 
   /**
-   * @generated from field: string desc = 3;
+   * @generated from field: string city_id = 3;
    */
-  desc: string;
+  cityId: string;
 
   /**
-   * @generated from field: string location = 4;
+   * @generated from field: string created_by = 4;
    */
-  location: string;
+  createdBy: string;
 
   /**
-   * @generated from field: string address = 5;
+   * @generated from field: string make = 5;
    */
-  address: string;
+  make: string;
 
   /**
-   * @generated from field: string modelType = 6;
+   * @generated from field: string model = 6;
    */
-  modelType: string;
+  model: string;
 
   /**
-   * @generated from field: int32 basePriceINR = 7;
+   * @generated from field: int32 year = 7;
    */
-  basePriceINR: number;
+  year: number;
 
   /**
-   * @generated from field: int32 currentBid = 8;
+   * @generated from field: string vin = 8;
    */
-  currentBid: number;
+  vin: string;
 
   /**
-   * @generated from field: bool auctionActive = 9;
+   * @generated from field: string registration_number = 9;
    */
-  auctionActive: boolean;
+  registrationNumber: string;
 
   /**
-   * @generated from field: optional google.protobuf.Timestamp auctionClosingTime = 10;
+   * @generated from field: wheelbid.v1.FuelType fuel_type = 10;
    */
-  auctionClosingTime?: Timestamp;
+  fuelType: FuelType;
 
   /**
-   * @generated from field: wheelbid.v1.Features features = 11;
+   * @generated from field: wheelbid.v1.Transmission transmission = 11;
    */
-  features?: Features;
+  transmission: Transmission;
+
+  /**
+   * @generated from field: int32 kilometers_driven = 12;
+   */
+  kilometersDriven: number;
+
+  /**
+   * @generated from field: int32 ownership_count = 13;
+   */
+  ownershipCount: number;
+
+  /**
+   * @generated from field: optional string body_type = 14;
+   */
+  bodyType?: string;
+
+  /**
+   * @generated from field: optional string exterior_color = 15;
+   */
+  exteriorColor?: string;
+
+  /**
+   * @generated from field: optional string condition_grade = 16;
+   */
+  conditionGrade?: string;
+
+  /**
+   * @generated from field: int64 base_price = 17;
+   */
+  basePrice: bigint;
+
+  /**
+   * @generated from field: optional string description = 18;
+   */
+  description?: string;
+
+  /**
+   * @generated from field: wheelbid.v1.DealType deal_type = 19;
+   */
+  dealType: DealType;
+
+  /**
+   * @generated from field: bool is_featured = 20;
+   */
+  isFeatured: boolean;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 21;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * @generated from field: google.protobuf.Timestamp updated_at = 22;
+   */
+  updatedAt?: Timestamp;
 };
 
 /**
@@ -84,33 +137,188 @@ export const CarSchema: GenMessage<Car> = /*@__PURE__*/
   messageDesc(file_wheelbid_v1_car, 0);
 
 /**
- * @generated from message wheelbid.v1.CarDetailsRequest
+ * @generated from message wheelbid.v1.GetCarRequest
  */
-export type CarDetailsRequest = Message<"wheelbid.v1.CarDetailsRequest"> & {
+export type GetCarRequest = Message<"wheelbid.v1.GetCarRequest"> & {
   /**
-   * @generated from field: string carId = 1;
+   * @generated from field: string id = 1;
    */
-  carId: string;
+  id: string;
 };
 
 /**
- * Describes the message wheelbid.v1.CarDetailsRequest.
- * Use `create(CarDetailsRequestSchema)` to create a new message.
+ * Describes the message wheelbid.v1.GetCarRequest.
+ * Use `create(GetCarRequestSchema)` to create a new message.
  */
-export const CarDetailsRequestSchema: GenMessage<CarDetailsRequest> = /*@__PURE__*/
+export const GetCarRequestSchema: GenMessage<GetCarRequest> = /*@__PURE__*/
   messageDesc(file_wheelbid_v1_car, 1);
+
+/**
+ * @generated from message wheelbid.v1.ListCarsRequest
+ */
+export type ListCarsRequest = Message<"wheelbid.v1.ListCarsRequest"> & {
+  /**
+   * @generated from field: string city_id = 1;
+   */
+  cityId: string;
+
+  /**
+   * @generated from field: optional wheelbid.v1.DealType deal_type = 2;
+   */
+  dealType?: DealType;
+
+  /**
+   * @generated from field: int32 limit = 3;
+   */
+  limit: number;
+
+  /**
+   * @generated from field: int32 offset = 4;
+   */
+  offset: number;
+};
+
+/**
+ * Describes the message wheelbid.v1.ListCarsRequest.
+ * Use `create(ListCarsRequestSchema)` to create a new message.
+ */
+export const ListCarsRequestSchema: GenMessage<ListCarsRequest> = /*@__PURE__*/
+  messageDesc(file_wheelbid_v1_car, 2);
+
+/**
+ * @generated from message wheelbid.v1.CarListResponse
+ */
+export type CarListResponse = Message<"wheelbid.v1.CarListResponse"> & {
+  /**
+   * @generated from field: repeated wheelbid.v1.Car cars = 1;
+   */
+  cars: Car[];
+
+  /**
+   * @generated from field: int32 total_count = 2;
+   */
+  totalCount: number;
+};
+
+/**
+ * Describes the message wheelbid.v1.CarListResponse.
+ * Use `create(CarListResponseSchema)` to create a new message.
+ */
+export const CarListResponseSchema: GenMessage<CarListResponse> = /*@__PURE__*/
+  messageDesc(file_wheelbid_v1_car, 3);
+
+/**
+ * @generated from enum wheelbid.v1.DealType
+ */
+export enum DealType {
+  /**
+   * @generated from enum value: SELL = 0;
+   */
+  SELL = 0,
+
+  /**
+   * @generated from enum value: AUCTION = 1;
+   */
+  AUCTION = 1,
+
+  /**
+   * @generated from enum value: SOLD = 2;
+   */
+  SOLD = 2,
+
+  /**
+   * @generated from enum value: UNAVAILABLE = 3;
+   */
+  UNAVAILABLE = 3,
+}
+
+/**
+ * Describes the enum wheelbid.v1.DealType.
+ */
+export const DealTypeSchema: GenEnum<DealType> = /*@__PURE__*/
+  enumDesc(file_wheelbid_v1_car, 0);
+
+/**
+ * @generated from enum wheelbid.v1.FuelType
+ */
+export enum FuelType {
+  /**
+   * @generated from enum value: PETROL = 0;
+   */
+  PETROL = 0,
+
+  /**
+   * @generated from enum value: DIESEL = 1;
+   */
+  DIESEL = 1,
+
+  /**
+   * @generated from enum value: ELECTRIC = 2;
+   */
+  ELECTRIC = 2,
+
+  /**
+   * @generated from enum value: HYBRID = 3;
+   */
+  HYBRID = 3,
+
+  /**
+   * @generated from enum value: CNG = 4;
+   */
+  CNG = 4,
+}
+
+/**
+ * Describes the enum wheelbid.v1.FuelType.
+ */
+export const FuelTypeSchema: GenEnum<FuelType> = /*@__PURE__*/
+  enumDesc(file_wheelbid_v1_car, 1);
+
+/**
+ * @generated from enum wheelbid.v1.Transmission
+ */
+export enum Transmission {
+  /**
+   * @generated from enum value: MANUAL = 0;
+   */
+  MANUAL = 0,
+
+  /**
+   * @generated from enum value: AUTOMATIC = 1;
+   */
+  AUTOMATIC = 1,
+
+  /**
+   * @generated from enum value: AMT = 2;
+   */
+  AMT = 2,
+}
+
+/**
+ * Describes the enum wheelbid.v1.Transmission.
+ */
+export const TransmissionSchema: GenEnum<Transmission> = /*@__PURE__*/
+  enumDesc(file_wheelbid_v1_car, 2);
 
 /**
  * @generated from service wheelbid.v1.CarService
  */
 export const CarService: GenService<{
   /**
-   * @generated from rpc wheelbid.v1.CarService.getCarDetails
+   * @generated from rpc wheelbid.v1.CarService.GetCar
    */
-  getCarDetails: {
+  getCar: {
     methodKind: "unary";
-    input: typeof CarDetailsRequestSchema;
+    input: typeof GetCarRequestSchema;
     output: typeof CarSchema;
+  },
+  /**
+   * @generated from rpc wheelbid.v1.CarService.ListCars
+   */
+  listCars: {
+    methodKind: "unary";
+    input: typeof ListCarsRequestSchema;
+    output: typeof CarListResponseSchema;
   },
 }> = /*@__PURE__*/
   serviceDesc(file_wheelbid_v1_car, 0);

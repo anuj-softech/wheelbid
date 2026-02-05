@@ -2,26 +2,75 @@ syntax = "proto3";
 
 package wheelbid.v1;
 import "google/protobuf/timestamp.proto";
-import "wheelbid/v1/features.proto";
+
+enum DealType {
+  SELL = 0;
+  AUCTION = 1;
+  SOLD = 2;
+  UNAVAILABLE = 3;
+}
+
+enum FuelType {
+  PETROL = 0;
+  DIESEL = 1;
+  ELECTRIC = 2;
+  HYBRID = 3;
+  CNG = 4;
+}
+
+enum Transmission {
+  MANUAL = 0;
+  AUTOMATIC = 1;
+  AMT = 2;
+}
 
 message Car {
-  string car_id = 1;
-  string name = 2;
-  string desc = 3;
-  string location = 4;
-  string address = 5;
-  string model_type = 6;
-  int32 base_price_INR = 7;
-  int32 current_bid = 8;
-  bool auctionActive = 9;
-  optional google.protobuf.Timestamp auctionClosingTime = 10;
-  Features features = 11;
+  string id = 1;
+  string office_id = 2;
+  string city_id = 3;
+  string created_by = 4;
+
+  string make = 5;
+  string model = 6;
+  int32 year = 7;
+  string vin = 8;
+  string registration_number = 9;
+
+  FuelType fuel_type = 10;
+  Transmission transmission = 11;
+  int32 kilometers_driven = 12;
+  int32 ownership_count = 13;
+
+  optional string body_type = 14;
+  optional string exterior_color = 15;
+  optional string condition_grade = 16;
+
+  int64 base_price = 17;
+  optional string description = 18;
+  DealType deal_type = 19;
+  bool is_featured = 20;
+
+  google.protobuf.Timestamp created_at = 21;
+  google.protobuf.Timestamp updated_at = 22;
+}
+
+message GetCarRequest {
+  string id = 1;
+}
+
+message ListCarsRequest {
+  string city_id = 1;
+  optional DealType deal_type = 2;
+  int32 limit = 3;
+  int32 offset = 4;
+}
+
+message CarListResponse {
+  repeated Car cars = 1;
+  int32 total_count = 2;
 }
 
 service CarService {
-  rpc getCarDetails(CarDetailsRequest) returns (Car);
-}
-
-message CarDetailsRequest{
-  string carId = 1;
+  rpc GetCar (GetCarRequest) returns (Car);
+  rpc ListCars (ListCarsRequest) returns (CarListResponse);
 }

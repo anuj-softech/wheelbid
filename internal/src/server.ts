@@ -2,12 +2,12 @@ import express from "express";
 import cors from "cors";
 import { expressConnectMiddleware } from "@connectrpc/connect-express";
 import {dataRouter} from "./router/data";
-import {test_database} from "./db/test";
+import {test_database} from "./db/main";
 
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5174", // Your SvelteKit dev port
+    origin: process.env.CORS_ORIGIN,
     methods: ["POST", "GET", "OPTIONS"],
     allowedHeaders: [
         "Content-Type",
@@ -22,15 +22,14 @@ app.use(expressConnectMiddleware({
     routes:dataRouter,
 }));
 
-app.get("/", (req, res) => {
-    res.send("WheelBid RPC Server is running.");
+app.all("/", (req, res) => {
+    res.redirect( process.env.CORS_ORIGIN??"/");
 });
 
-app.get("/test_database", (req, res) => {
+app.get("/test_db", (req, res) => {
     test_database().then(r => {
-        console.log("test_database", r);
+        res.send("database status" + r);
     });
-    res.send("database server is running.");
 })
 
 
@@ -38,6 +37,5 @@ const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`-----------------------------------------------`);
     console.log(`🚀 Server: http://localhost:${PORT}`);
-    console.log(`🚗 Service: wheelbid.v1.CarService`);
     console.log(`-----------------------------------------------`);
 });
